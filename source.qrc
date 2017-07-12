@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/pict">
+        <file>Pict/Open.png</file>
+        <file>Pict/Exit.png</file>
+        <file>Pict/printer.png</file>
+        <file>Pict/SaveAs.png</file>
+        <file>Pict/Del.png</file>
+        <file>Pict/Add.png</file>
+        <file>Pict/Change.png</file>
+        <file>Pict/SortAZ.png</file>
+        <file>Pict/SortZA.png</file>
+        <file>Pict/Search.png</file>
+        <file>Pict/Calendar.png</file>
+        <file>Pict/Ok.png</file>
+        <file>Pict/Ablist.png</file>
+        <file>Pict/People.png</file>
+        <file>Pict/Service.png</file>
+        <file>Pict/Accept.png</file>
+        <file>Pict/dumbbell_PNG16366.png</file>
+    </qresource>
+</RCC>
