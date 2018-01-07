@@ -14,13 +14,12 @@
          ~GeneralTab();
          QDataWidgetMapper *mapper;
          QTextEdit *numberEdit,*nameEdit,*dateEdit,*serviceEdit,*balanseEdit;
-         QPushButton *tableCerviceButton,*tableNameButton;
+         QPushButton *tableNameButton;
          void setMyModel (QSqlTableModel *model);
          void setIndex (int row);
 
      private slots:
          void selectNameSlot();
-         void selectCerviceSlot();
        };
 
      class PermissionsTab : public QWidget
@@ -47,7 +46,7 @@
                 *calendarMenu7,*calendarMenu8,*calendarMenu9,*calendarMenu10,*calendarMenu11,*calendarMenu12;
          QCalendarWidget *calendar1,*calendar2,*calendar3,*calendar4,*calendar5,*calendar6,*calendar7,*calendar8,
                          *calendar9,*calendar10,*calendar11,*calendar12;
-         QString podate;
+         QString podate="";
 
          void setMyModel2 (QSqlTableModel *model);
          void setIndex (int row);

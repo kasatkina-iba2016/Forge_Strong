@@ -23,6 +23,7 @@ public:
     QToolBar *ptb1;
     QAction *newAddAction, *delAction, *acceptAction, *searchAction,
             *sortAzAction, *sortZaAction;
+    QString name1, name2;
     QString getInput() const;
     QString getInput2() const;
 

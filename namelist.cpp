@@ -1,4 +1,5 @@
 #include "namelist.h"
+#include "namedialog.h"
 #include <QHeaderView>
 #include <QGridLayout>
 
@@ -13,6 +14,9 @@ nameList::nameList(const QString &titleName, const QString &nameTableName, const
     model->setHeaderData(0,Qt::Horizontal,trUtf8("Номер"));
     model->setHeaderData(1,Qt::Horizontal,headerName1);
     model->setHeaderData(2,Qt::Horizontal,headerName2);
+
+    name1=headerName1;
+    name2=headerName2;
 
     view=new QTableView(this);
     view->setModel(model);
@@ -77,16 +81,43 @@ nameList::~nameList()
 
 void nameList::addNewStringSlot()
 {
+    NameDialog name("Новая запись",name1,name2,this);
     int row=model->rowCount();
     model->insertRow(row);
     model->setData(model->index(row,0),row+1);
+
+    switch( name.exec() )
+    {
+       case QDialog::Accepted:
+
+       model->insertRows(row,1);
+       model->setData(model->index(row,1),name.getInputName());
+       model->setData(model->index(row,2),name.getInputTelephone());
+       model->submitAll();
+
+         break;
+
+       default:
+       qDebug() << "Unexpected";
+     }
 }
 
 void nameList::delStringSlot()
 {
-   {
-     model->removeRow(view->currentIndex().row());
-    }
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Удаление");
+    msgBox.setText("Удалить выбранный элемент?");
+    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    int res = msgBox.exec();
+    if (res == QMessageBox::Ok)
+     {
+        model->removeRow(view->currentIndex().row());
+        model->submitAll();
+        model->select();
+     }
+    else  msgBox.close();
 }
 
 void nameList::getData()

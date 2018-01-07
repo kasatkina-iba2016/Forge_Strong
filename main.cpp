@@ -29,6 +29,11 @@ int main(int argc, char *argv[])
         qDebug()<<"DB Forge is open.";
     }
 
+    QFile StyleFile;
+        StyleFile.setFileName(":/Pict/Stylefile.css");
+        StyleFile.open(QFile::ReadOnly);
+        QString cssStr=StyleFile.readAll();
+        qApp->setStyleSheet(cssStr);
     MainWindow mai;
 
     mai.show();

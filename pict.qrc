@@ -3,7 +3,6 @@
         <file>Pict/Ablist.png</file>
         <file>Pict/dumbbell_PNG16366.png</file>
         <file>Pict/Accept.png</file>
-        <file>Pict/Add.png</file>
         <file>Pict/Calendar.png</file>
         <file>Pict/Change.png</file>
         <file>Pict/Del.png</file>
@@ -17,5 +16,20 @@
         <file>Pict/Service.png</file>
         <file>Pict/SortAZ.png</file>
         <file>Pict/SortZA.png</file>
+        <file>Pict/Stylefile.css</file>
+        <file>Pict/player.png</file>
+        <file>Pict/Play.png</file>
+        <file>Pict/Без имени-4.png</file>
+        <file>Pict/Pause.png</file>
+        <file>Pict/5.png</file>
+        <file>Pict/6.png</file>
+        <file>Pict/7.png</file>
+        <file>Pict/3.png</file>
+        <file>Pict/calculator.png</file>
+        <file>Pict/Add.png</file>
+        <file>Pict/volume.png</file>
+        <file>Pict/noVolume.png</file>
+        <file>Pict/windows.png</file>
+        <file>Pict/Channel_Mosaic_icon-icons.com_54197.png</file>
     </qresource>
 </RCC>

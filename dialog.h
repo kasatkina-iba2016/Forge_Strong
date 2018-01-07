@@ -2,6 +2,7 @@
 #define DIALOG_H
 
 #include <QtWidgets>
+#include <QFile>
 
 class Dialog : public QDialog
 {

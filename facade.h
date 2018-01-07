@@ -14,7 +14,7 @@
 #include "proxymodel.h"
 #include "edit.h"
 
-class Facade : public QWidget
+class Facade : public QDialog
 {
     Q_OBJECT
 
@@ -24,7 +24,7 @@ public:
 
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const;
 
-    QToolBar *ptb1,*ptb2;
+    QToolBar *ptb1;
     QAction *addAction, *delAction, *changeAction, *okAction, *sortAzAction, *sortZaAction,
     *searchAction;
     int count;
@@ -38,7 +38,7 @@ public:
     QTextEdit *data1,*data2,*find;
     QMenu *calendarMenu1;
     QMenu *calendarMenu2;
-    QString podate;
+    QString begindate,enddate;
 
 signals:
     void signalMinDate(QDate datMin);

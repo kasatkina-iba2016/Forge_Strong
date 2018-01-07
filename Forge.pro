@@ -6,6 +6,7 @@
 
 QT       += core gui sql
 QT       += printsupport
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,16 +20,25 @@ SOURCES += main.cpp\
     dialog.cpp \
     information.cpp \
     mainwindow.cpp \
-    proxymodel.cpp
+    proxymodel.cpp \
+    namedialog.cpp \
+    audioplayer.cpp \
+    calculator.cpp
 
 HEADERS  += facade.h \
     namelist.h \
     dialog.h \
     information.h \
     mainwindow.h \
-    proxymodel.h
+    proxymodel.h \
+    namedialog.h \
+    audioplayer.h \
+    calculator.h
 
 RESOURCES += \
     pict.qrc
 
 DISTFILES +=
+
+FORMS += \
+    audioplayer.ui

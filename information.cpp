@@ -41,11 +41,8 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent)
     QLabel *balanseLbl=new QLabel("Срок действия по/Остаток занятий");
     tableNameButton=new QPushButton(tr("..."));
     tableNameButton->setFixedSize(27,27);
-    tableCerviceButton=new QPushButton(tr("..."));
-    tableCerviceButton->setFixedSize(27,27);
 
     connect(tableNameButton,SIGNAL(clicked()),SLOT(selectNameSlot()));
-    connect(tableCerviceButton,SIGNAL(clicked()),SLOT(selectCerviceSlot()));
 
     serviceEdit=new QTextEdit;
     serviceEdit->setFixedHeight(25);
@@ -71,8 +68,6 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent)
     Layout1->addWidget(tableNameButton);
     Layout1->setSpacing(0);
     Layout2->addWidget(serviceEdit);
-    Layout2->addWidget(tableCerviceButton);
-    Layout2->setSpacing(0);
 
     QGridLayout *newLineLayout=new QGridLayout(this);
     newLineLayout->addWidget(nameLbl,0,0);
@@ -125,32 +120,6 @@ void GeneralTab::selectNameSlot()
       }
 }
 
-void GeneralTab::selectCerviceSlot()
-{
-    nameList nn("Список услуг","Cervices","Наименование услуги","Стоимость",this);
-    switch(nn.exec())
-    {
-       case QDialog::Accepted:
-        serviceEdit->setText(nn.getInput());
-        if (serviceEdit->toPlainText()=="Абонемент на 12 занятий")
-            balanseEdit->setText("12 занятий");
-        else if (serviceEdit->toPlainText()=="Абонемент на 8 занятий")
-            balanseEdit->setText("8 занятий");
-        else if (serviceEdit->toPlainText()=="Абонемент на 4 занятия")
-            balanseEdit->setText("4 занятия");
-        else if (serviceEdit->toPlainText()=="Абонемент на 1 месяц")
-           balanseEdit->setText(QDateTime::currentDateTime().addMonths(1).toString("dd/MM/yyyy"));
-       else if (serviceEdit->toPlainText()=="Абонемент на 3 месяца")
-           balanseEdit->setText(QDateTime::currentDateTime().addMonths(3).toString("dd/MM/yyyy"));
-       else if (serviceEdit->toPlainText()=="Абонемент на 6 месяцев")
-           balanseEdit->setText(QDateTime::currentDateTime().addMonths(6).toString("dd/MM/yyyy"));
-        break;
-
-       default:
-        break;
-    }
-}
-
 PermissionsTab::PermissionsTab(QWidget *parent):QWidget(parent)
 {
     setWindowTitle("Информация о посещениях");
@@ -158,7 +127,7 @@ PermissionsTab::PermissionsTab(QWidget *parent):QWidget(parent)
 
     QGridLayout *newLineLayout=new QGridLayout(this);
 
-    visit1=new QTextEdit;  btn1=new QToolButton;
+    visit1=new QTextEdit();  btn1=new QToolButton;
     visit2=new QTextEdit;  btn2=new QToolButton;
     visit3=new QTextEdit;  btn3=new QToolButton;
     visit4=new QTextEdit;  btn4=new QToolButton;
@@ -193,14 +162,14 @@ PermissionsTab::PermissionsTab(QWidget *parent):QWidget(parent)
     calendar<<calendar1<<calendar2<<calendar3<<calendar4<<calendar5<<calendar6
            <<calendar7<<calendar8<<calendar9<<calendar10<<calendar11<<calendar12;
 
-   btn<<btn1<<btn2<<btn3<<btn4<<btn5<<btn6<<btn7<<btn8<<btn9<<btn10<<btn11<<btn12;
-
+    btn<<btn1<<btn2<<btn3<<btn4<<btn5<<btn6<<btn7<<btn8<<btn9<<btn10<<btn11<<btn12;
 
     visit<<visit1<<visit2<<visit3<<visit4<<visit5<<visit6<<visit7<<visit8<<visit9<<visit10<<visit11<<visit12;
 
     for (int i=0;i<12;i++)
     {
         visit[i]->setReadOnly(true);
+        visit[i]->setText("");
     }
 
     QList<QHBoxLayout*> lay;
@@ -348,21 +317,22 @@ void PermissionsTab::changeDateSlot11(QDate dat)
 
  void PermissionsTab::setMyModel2(QSqlTableModel *model)
  {
+    // qDebug()<<model->.toString();
      mapper2->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
      model->select();
      mapper2->setModel(model);
-     mapper2->addMapping(visit1,6,"plainText");
-     mapper2->addMapping(visit2,7,"plainText");
-     mapper2->addMapping(visit3,8,"plainText");
-     mapper2->addMapping(visit4,9,"plainText");
-     mapper2->addMapping(visit5,10,"plainText");
-     mapper2->addMapping(visit6,11,"plainText");
-     mapper2->addMapping(visit7,12,"plainText");
-     mapper2->addMapping(visit8,13,"plainText");
-     mapper2->addMapping(visit9,14,"plainText");
-     mapper2->addMapping(visit10,15,"plainText");
-     mapper2->addMapping(visit11,16,"plainText");
-     mapper2->addMapping(visit12,17,"plainText");
+     mapper2->addMapping(visit1,6);
+     mapper2->addMapping(visit2,7);
+     mapper2->addMapping(visit3,8);
+     mapper2->addMapping(visit4,9);
+     mapper2->addMapping(visit5,10);
+     mapper2->addMapping(visit6,11);
+     mapper2->addMapping(visit7,12);
+     mapper2->addMapping(visit8,13);
+     mapper2->addMapping(visit9,14);
+     mapper2->addMapping(visit10,15);
+     mapper2->addMapping(visit11,16);
+     mapper2->addMapping(visit12,17);
  }
 
  void PermissionsTab::setIndex(int row)

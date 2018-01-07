@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QSortFilterProxyModel>
 
-Facade::Facade(const QString &mainTableName, QWidget *parent):QWidget(parent)
+Facade::Facade(const QString &mainTableName, QWidget *parent):QDialog(parent)
 
 {
     count=0;
@@ -23,17 +23,16 @@ Facade::Facade(const QString &mainTableName, QWidget *parent):QWidget(parent)
     model->setHeaderData(2,Qt::Horizontal,trUtf8("ФИО"));
     model->setHeaderData(3,Qt::Horizontal,trUtf8("Вид абонемента"));
     model->setHeaderData(4,Qt::Horizontal,trUtf8("Сумма оплаты"));
-    model->setHeaderData(5,Qt::Horizontal,trUtf8("Срок действия по/Остаток занятий"));
+    model->setHeaderData(5,Qt::Horizontal,trUtf8("Остаток занятий/\nСрок действия"));
 
-    proxyMod=new ProxyModel(this);
+    proxyMod=new ProxyModel();
     proxyMod->setSourceModel(model);
-    view=new QTableView(this);
+    view=new QTableView();
     view->setModel(proxyMod);
 
-      inform=new Information(this);
-      inform->gen->setMyModel(model);
-      inform->perm->setMyModel2(model);
-
+    inform=new Information();
+    inform->gen->setMyModel(model);
+    inform->perm->setMyModel2(model);
     //скрываем столбцы посещений
 
     for (int i=6;i<18;i++)
@@ -45,7 +44,7 @@ Facade::Facade(const QString &mainTableName, QWidget *parent):QWidget(parent)
     view->resizeColumnsToContents();
     view->resizeRowsToContents();
     view->setMinimumSize(700,300);
-    view->setStyleSheet("QTableView::item:selected{background: #ece9d8;color: blue;}");
+   // view->setStyleSheet("QTableView::item:selected{background: #ece9d8;color: blue;}");
 
     find=new QTextEdit;
     find->setFixedSize(90,25);
@@ -125,31 +124,29 @@ Facade::Facade(const QString &mainTableName, QWidget *parent):QWidget(parent)
     connect(sortZaAction, SIGNAL(triggered()),SLOT(ZaSlot()));
 
     ptb1=new QToolBar;
-    ptb2=new QToolBar;
+    ptb1->addWidget(lbl1);
+    ptb1->addWidget(btn1);
+    ptb1->addWidget(data1);
+    ptb1->addWidget(lbl2);
+    ptb1->addWidget(btn2);
+    ptb1->addWidget(data2);
+    ptb1->addAction(okAction);
+    ptb1->addSeparator();
     ptb1->addAction(addAction);
     ptb1->addAction(delAction);
     ptb1->addAction(changeAction);
     ptb1->addSeparator();
-    ptb1->addAction(sortAzAction);
-    ptb1->addAction(sortZaAction);
-    ptb1->addSeparator();
     ptb1->addWidget(find);
     ptb1->addAction(searchAction);
-
-    ptb2->addWidget(lbl1);
-    ptb2->addWidget(btn1);
-    ptb2->addWidget(data1);
-    ptb2->addWidget(lbl2);
-    ptb2->addWidget(btn2);
-    ptb2->addWidget(data2);
-    ptb2->addAction(okAction);
+    ptb1->addSeparator();
+    ptb1->addAction(sortAzAction);
+    ptb1->addAction(sortZaAction);
 
     ab4z="Абонемент на 4 занятия"; ab8z="Абонемент на 8 занятий"; ab12z="Абонемент на 12 занятий";
     ab1m="Абонемент на месяц"; ab3m="Абонемент на 3 месяца"; ab6m="Абонемент на 6 месяцев";
 
     QVBoxLayout *mainLayout=new QVBoxLayout(this);
     mainLayout->addWidget(ptb1);
-    mainLayout->addWidget(ptb2);
     mainLayout->addWidget(view);
     setLayout(mainLayout);
 }
@@ -183,6 +180,10 @@ void Facade::addNameSlot()
        model->setData(model->index(row,3),nameDialog.getInputService());
        model->setData(model->index(row,4),nameDialog.getInputCena()+" руб.");
 
+       for (int i=6;i<18;i++)
+       model->setData(model->index(row,i),"");
+
+
          if (nameDialog.getInputService()==ab12z)
             model->setData(model->index(row,5),"12 занятий");
          else if (nameDialog.getInputService()==ab8z)
@@ -198,11 +199,13 @@ void Facade::addNameSlot()
 
          model->submitAll();
 
+
          break;
 
        default:
        qDebug() << "Unexpected";
      }
+
 }
 
 void Facade::delNameSlot()
@@ -228,7 +231,8 @@ void Facade::addInformSlot()
   int vis=0, count=0;
   QModelIndex proxyIndex;
   proxyIndex=proxyMod->mapToSource(view->currentIndex());
-
+  inform->gen->setIndex(proxyIndex.row());
+  inform->perm->setIndex(proxyIndex.row());
   if (proxyMod->data(proxyMod->index(view->currentIndex().row(),3)).toString()==ab4z)
    {
        vis=4;
@@ -257,9 +261,6 @@ void Facade::addInformSlot()
    {
      inform->perm->setDisabled(true);
    }
-
-  inform->gen->setIndex(proxyIndex.row());
-  inform->perm->setIndex(proxyIndex.row());
 
   switch( inform->exec() )
   {
@@ -343,16 +344,16 @@ void Facade::getMaxDate()
 
 void Facade::changeDateSlot1(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    begindate=dat.toString("dd/MM/yyyy");
     calendarMenu1->close();
-    data1->setText(podate);
+    data1->setText(begindate);
 }
 
 void Facade::changeDateSlot2(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    enddate=dat.toString("dd/MM/yyyy");
     calendarMenu2->close();
-    data2->setText(podate);
+    data2->setText(enddate);
 }
 
 void Facade::getData()
@@ -382,6 +383,7 @@ void Facade::getData()
         count=0;
     }
 }
+
 
 void Facade::AzSlot()
 {

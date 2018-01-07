@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    this->setWindowTitle("Кузня");
    this->setWindowIcon(QPixmap(":/Pict/dumbbell_PNG16366.png"));
    fac= new Facade("MainWindowTable", this);
-   //fac->setWindowTitle("Список абонементов");
    fac->setAttribute(Qt::WA_DeleteOnClose);
    fac->setWindowIcon(QPixmap(":/Pict/dumbbell_PNG16366.png"));
    mdiArea=new QMdiArea;
@@ -21,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    mdiArea->addSubWindow(fac);
 
    signalMap=new QSignalMapper(this);
-   //connect(signalMap,SIGNAL(mapped(QWidget*)),this,SLOT()
 
    mnuFile1=new QMenu("&Файл");
    mnuFile2=new QMenu("&Справочниики");
@@ -33,21 +31,18 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    mnuFile1->addAction(QPixmap(":/Pict/SaveAs.png"),"&Сохранить как...",this,SLOT(fileSaveAs()),Qt::CTRL+Qt::SHIFT+Qt::Key_S);
    saveAsAction->setIconVisibleInMenu(true);
    connect(saveAsAction, SIGNAL(triggered()),SLOT(fileSaveAs()));
-   mnuFile1->addSeparator();
 
    printAction=new QAction(tr("&Печать"),this);
    printAction->setIcon(QPixmap(":/Pict/printer.png"));
    mnuFile1->addAction(QPixmap(":/Pict/printer.png"),"&Печать",this,SLOT(print()),Qt::CTRL+Qt::Key_P);
    printAction->setIconVisibleInMenu(true);
    connect(printAction, SIGNAL(triggered()),SLOT(print()));
-   mnuFile1->addSeparator();
 
    exitAction=new QAction(tr("&Выход"),0);
    exitAction->setIcon(QPixmap(":/Pict/Exit.png"));
    mnuFile1->addAction(QPixmap(":/Pict/Exit.png"),"&Выход",this,SLOT(close()),Qt::ALT+Qt::Key_F4);
    exitAction->setIconVisibleInMenu(true);
    connect(exitAction, SIGNAL(triggered()),SLOT(close()));
-   mnuFile1->addSeparator();
 
    abonementAction=new QAction("&Абонементы",0);
    abonementAction->setIcon(QPixmap(":/Pict/Ablist.png"));
@@ -68,8 +63,30 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    connect(serviceAction, SIGNAL(triggered()),SLOT(serviceSlot()));
 
    cascadeAction=new QAction("Каскад",0);
+   cascadeAction->setIcon(QPixmap(":/Pict/windows.png"));
+   mnuFile4->addAction(QPixmap(":/Pict/windows.png"),"&Каскад",this,SLOT(cascadeSubWindows()),Qt::CTRL+Qt::Key_K);
+   cascadeAction->setIconVisibleInMenu(true);
+   connect(cascadeAction, SIGNAL(triggered()), mdiArea, SLOT(cascadeSubWindows()));
 
-   mnuFile4->addAction(cascadeAction);
+   titleAction=new QAction("Мозайка",0);
+   titleAction->setIcon(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"));
+   mnuFile4->addAction(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"),"&Мозайка",this,SLOT(tileSubWindows()),Qt::CTRL+Qt::Key_K);
+   titleAction->setIconVisibleInMenu(true);
+   connect(titleAction, SIGNAL(triggered()), mdiArea, SLOT(tileSubWindows()));
+
+   mySuperPlayer=new audioPlayer(0);
+   audioAction=new QAction("Super audio player",0);
+   audioAction->setIcon(QPixmap(":/Pict/player.png"));
+   mnuFile4->addAction(QPixmap(":/Pict/player.png"),"&Super audio player",this,SLOT(audioSlot()),Qt::ALT+Qt::Key_A);
+   audioAction->setIconVisibleInMenu(true);
+   connect(audioAction, SIGNAL(triggered()),SLOT(audioSlot()));
+
+   calculator=new Calculator;
+   calculatorAction=new QAction("Калькулятор",0);
+   calculatorAction->setIcon(QPixmap(":/Pict/calculator.png"));
+   mnuFile4->addAction(QPixmap(":/Pict/calculator.png"),"Калькулятор",this,SLOT(calculatorSlot()),Qt::ALT+Qt::Key_Q);
+   calculatorAction->setIconVisibleInMenu(true);
+   connect(calculatorAction, SIGNAL(triggered()),SLOT(calculatorSlot()));
 
    menuBar()->addMenu(mnuFile1);
    menuBar()->addMenu(mnuFile2);
@@ -85,6 +102,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    ptb1->addAction(abonementAction);
    ptb1->addAction(clientsAction);
    ptb1->addAction(serviceAction);
+   ptb1->addSeparator();
+   ptb1->addAction(audioAction);
+   ptb1->addAction(calculatorAction);
    setCentralWidget(mdiArea);
 }
 
@@ -163,3 +183,24 @@ void MainWindow::abonementSlot()
     mdiArea->addSubWindow(facad);
     facad->show();
 }
+
+void MainWindow::audioSlot()
+{
+    mySuperPlayer->show();
+}
+
+void MainWindow::calculatorSlot()
+{
+    calculator->setStyleSheet("Calculator { background: qlineargradient(x1:0, y1:0, x2:1, y2:1,stop:0.1 #193838, stop: 0.2 #142121, stop:0.5 darckgrey);"
+                                                   "color: white;}");
+    calculator->monit2->setStyleSheet("background:white; color:darckgray; ");
+    calculator->monit1->setStyleSheet("background:white; color:darckgray; font-weight: bold;");
+    calculator->setWindowTitle("Calculator");
+    calculator->resize(230,300);
+    calculator->show();
+}
+
+ MainWindow::~MainWindow()
+ {
+
+ }

@@ -1,0 +1,47 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Pict/Ablist.png</file>
+        <file>Pict/Accept.png</file>
+        <file>Pict/Add.png</file>
+        <file>Pict/Calendar.png</file>
+        <file>Pict/Change.png</file>
+        <file>Pict/Del.png</file>
+        <file>Pict/dumbbell_PNG16366.png</file>
+        <file>Pict/Exit.png</file>
+        <file>Pict/Ok.png</file>
+        <file>Pict/Open.png</file>
+        <file>Pict/People.png</file>
+        <file>Pict/printer.png</file>
+        <file>Pict/SaveAs.png</file>
+        <file>Pict/Search.png</file>
+        <file>Pict/Service.png</file>
+        <file>Pict/SortAZ.png</file>
+        <file>Pict/SortZA.png</file>
+        <file>Pict/Stylefile.css</file>
+        <file>audioplayer.cpp</file>
+        <file>audioplayer.h</file>
+        <file>audioplayer.ui</file>
+        <file>dialog.cpp</file>
+        <file>dialog.h</file>
+        <file>edit.h</file>
+        <file>facade.cpp</file>
+        <file>facade.h</file>
+        <file>Forge.pro</file>
+        <file>information.cpp</file>
+        <file>information.h</file>
+        <file>main.cpp</file>
+        <file>mainwindow.cpp</file>
+        <file>mainwindow.h</file>
+        <file>namedialog.cpp</file>
+        <file>namedialog.h</file>
+        <file>namelist.cpp</file>
+        <file>namelist.h</file>
+        <file>pict.qrc</file>
+        <file>pict1.qrc</file>
+        <file>proxymodel.cpp</file>
+        <file>proxymodel.h</file>
+        <file>source.qrc</file>
+        <file>viewforfacade.cpp</file>
+        <file>viewforfacade.h</file>
+    </qresource>
+</RCC>
