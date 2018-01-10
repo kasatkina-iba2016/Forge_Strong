@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     proxymodel.cpp \
     namedialog.cpp \
     audioplayer.cpp \
-    calculator.cpp
+    calculator.cpp \
+    authorizationUser.cpp
 
 HEADERS  += facade.h \
     namelist.h \
@@ -33,7 +34,8 @@ HEADERS  += facade.h \
     proxymodel.h \
     namedialog.h \
     audioplayer.h \
-    calculator.h
+    calculator.h \
+    authorizationUser.h
 
 RESOURCES += \
     pict.qrc
