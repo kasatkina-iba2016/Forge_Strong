@@ -4,7 +4,8 @@
 ProxyModel::ProxyModel(QObject *parent): QSortFilterProxyModel(parent)
 
 {
-    minDate.setDate(2017,01,01),  maxDate=QDate::currentDate();
+    minDate.setDate(2017,01,01);
+    maxDate=QDate::currentDate();
 }
 
 ProxyModel::~ProxyModel()
@@ -17,8 +18,8 @@ bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_pare
     QModelIndex from_date=sourceModel()->index(source_row,1,source_parent);
     QModelIndex to_date=sourceModel()->index(source_row,1,source_parent);
 
-    if (QDate::fromString(sourceModel()->data(from_date).toString(),"dd/MM/yyyy")>= minDate &&
-    QDate::fromString(sourceModel()->data(to_date).toString(),"dd/MM/yyyy") <=maxDate)
+    if (QDate::fromString(sourceModel()->data(from_date).toString(),"dd.MM.yyyy")>= minDate &&
+    QDate::fromString(sourceModel()->data(to_date).toString(),"dd.MM.yyyy") <=maxDate)
 {
         return true;
 }

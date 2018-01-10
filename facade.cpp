@@ -53,10 +53,10 @@ Facade::Facade(const QString &mainTableName, QWidget *parent):QDialog(parent)
     QLabel *lbl1=new QLabel("С:");
     QLabel *lbl2=new QLabel("  По:");
     data1=new QTextEdit;
-    data1->setText("01/01/2017");
+    data1->setText("01.06.2017");
     data1->setReadOnly(true);
     data2=new QTextEdit;
-    data2->setText(QDate::currentDate().toString("dd/MM/yyyy"));
+    data2->setText(QDate::currentDate().toString("dd.MM.yyyy"));
     data2->setReadOnly(true);
     QToolButton *btn1=new QToolButton;
     QToolButton *btn2=new QToolButton;
@@ -175,7 +175,7 @@ void Facade::addNameSlot()
 
        model->insertRows(row,1);
        model->setData(model->index(row,0),nameDialog.getInputNumber());
-       model->setData(model->index(row,1),QDateTime::currentDateTime().toString("dd/MM/yyyy"));
+       model->setData(model->index(row,1),QDateTime::currentDateTime().toString("dd.MM.yyyy"));
        model->setData(model->index(row,2),nameDialog.getInputName());
        model->setData(model->index(row,3),nameDialog.getInputService());
        model->setData(model->index(row,4),nameDialog.getInputCena()+" руб.");
@@ -191,11 +191,11 @@ void Facade::addNameSlot()
          else if (nameDialog.getInputService()==ab4z)
             model->setData(model->index(row,5),"4 занятия");
          else if (nameDialog.getInputService()==ab1m)
-            model->setData(model->index(row,5),QDateTime::currentDateTime().addMonths(1).toString("dd/MM/yyyy"));
+            model->setData(model->index(row,5),QDateTime::currentDateTime().addMonths(1).toString("dd.MM.yyyy"));
         else if (nameDialog.getInputService()==ab3m)
-            model->setData(model->index(row,5),QDateTime::currentDateTime().addMonths(3).toString("dd/MM/yyyy"));
+            model->setData(model->index(row,5),QDateTime::currentDateTime().addMonths(3).toString("dd.MM.yyyy"));
         else if (nameDialog.getInputService()==ab6m)
-            model->setData(model->index(row,5),QDateTime::currentDateTime().addMonths(6).toString("dd/MM/yyyy"));
+            model->setData(model->index(row,5),QDateTime::currentDateTime().addMonths(6).toString("dd.MM.yyyy"));
 
          model->submitAll();
 
@@ -334,24 +334,24 @@ void Facade::fileSaveAs()
 
 void Facade::getMinDate()
 {
-   emit signalMinDate(QDate::fromString(data1->toPlainText(),"dd/MM/yyyy"));
+   emit signalMinDate(QDate::fromString(data1->toPlainText(),"dd.MM.yyyy"));
 }
 
 void Facade::getMaxDate()
 {
-   emit signalMaxDate(QDate::fromString(data2->toPlainText(),"dd/MM/yyyy"));
+   emit signalMaxDate(QDate::fromString(data2->toPlainText(),"dd.MM.yyyy"));
 }
 
 void Facade::changeDateSlot1(QDate dat)
 {
-    begindate=dat.toString("dd/MM/yyyy");
+    begindate=dat.toString("dd.MM.yyyy");
     calendarMenu1->close();
     data1->setText(begindate);
 }
 
 void Facade::changeDateSlot2(QDate dat)
 {
-    enddate=dat.toString("dd/MM/yyyy");
+    enddate=dat.toString("dd.MM.yyyy");
     calendarMenu2->close();
     data2->setText(enddate);
 }

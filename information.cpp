@@ -108,7 +108,7 @@ void GeneralTab::setIndex(int row)
 
 void GeneralTab::selectNameSlot()
 {
-    nameList nn("Список клиентов","Klients","Фамилия Имя Отчество","Телефон/Email",this);
+    nameList nn("Список клиентов","Clients","Фамилия Имя Отчество","Телефон/Email",this);
      switch( nn.exec() )
      {
         case QDialog::Accepted:
@@ -124,41 +124,41 @@ PermissionsTab::PermissionsTab(QWidget *parent):QWidget(parent)
 {
     setWindowTitle("Информация о посещениях");
     mapper2=new QDataWidgetMapper(this);
-
     QGridLayout *newLineLayout=new QGridLayout(this);
 
-    visit1=new QTextEdit();  btn1=new QToolButton;
-    visit2=new QTextEdit;  btn2=new QToolButton;
-    visit3=new QTextEdit;  btn3=new QToolButton;
-    visit4=new QTextEdit;  btn4=new QToolButton;
-    visit5=new QTextEdit;  btn5=new QToolButton;
-    visit6=new QTextEdit;  btn6=new QToolButton;
-    visit7=new QTextEdit;  btn7=new QToolButton;
-    visit8=new QTextEdit;  btn8=new QToolButton;
-    visit9=new QTextEdit;  btn9=new QToolButton;
+    visit1=new  QTextEdit;  btn1=new  QToolButton;
+    visit2=new  QTextEdit;  btn2=new  QToolButton;
+    visit3=new  QTextEdit;  btn3=new  QToolButton;
+    visit4=new  QTextEdit;  btn4=new  QToolButton;
+    visit5=new  QTextEdit;  btn5=new  QToolButton;
+    visit6=new  QTextEdit;  btn6=new  QToolButton;
+    visit7=new  QTextEdit;  btn7=new  QToolButton;
+    visit8=new  QTextEdit;  btn8=new  QToolButton;
+    visit9=new  QTextEdit;  btn9=new  QToolButton;
     visit10=new QTextEdit;  btn10=new QToolButton;
     visit11=new QTextEdit;  btn11=new QToolButton;
     visit12=new QTextEdit;  btn12=new QToolButton;
 
-    calendarMenu1=new QMenu;  QHBoxLayout *lay1=new QHBoxLayout;
-    calendarMenu2=new QMenu;  QHBoxLayout *lay2=new QHBoxLayout;
-    calendarMenu3=new QMenu;  QHBoxLayout *lay3=new QHBoxLayout;
-    calendarMenu4=new QMenu;  QHBoxLayout *lay4=new QHBoxLayout;
-    calendarMenu5=new QMenu;  QHBoxLayout *lay5=new QHBoxLayout;
-    calendarMenu6=new QMenu;  QHBoxLayout *lay6=new QHBoxLayout;
-    calendarMenu7=new QMenu;  QHBoxLayout *lay7=new QHBoxLayout;
-    calendarMenu8=new QMenu;  QHBoxLayout *lay8=new QHBoxLayout;
-    calendarMenu9=new QMenu;  QHBoxLayout *lay9=new QHBoxLayout;
+    calendarMenu1=new  QMenu; QHBoxLayout *lay1=new  QHBoxLayout;
+    calendarMenu2=new  QMenu; QHBoxLayout *lay2=new  QHBoxLayout;
+    calendarMenu3=new  QMenu; QHBoxLayout *lay3=new  QHBoxLayout;
+    calendarMenu4=new  QMenu; QHBoxLayout *lay4=new  QHBoxLayout;
+    calendarMenu5=new  QMenu; QHBoxLayout *lay5=new  QHBoxLayout;
+    calendarMenu6=new  QMenu; QHBoxLayout *lay6=new  QHBoxLayout;
+    calendarMenu7=new  QMenu; QHBoxLayout *lay7=new  QHBoxLayout;
+    calendarMenu8=new  QMenu; QHBoxLayout *lay8=new  QHBoxLayout;
+    calendarMenu9=new  QMenu; QHBoxLayout *lay9=new  QHBoxLayout;
     calendarMenu10=new QMenu; QHBoxLayout *lay10=new QHBoxLayout;
     calendarMenu11=new QMenu; QHBoxLayout *lay11=new QHBoxLayout;
     calendarMenu12=new QMenu; QHBoxLayout *lay12=new QHBoxLayout;
 
-    calendar1=new QCalendarWidget;  calendar7=new QCalendarWidget;
-    calendar2=new QCalendarWidget;  calendar8=new QCalendarWidget;
-    calendar3=new QCalendarWidget;  calendar9=new QCalendarWidget;
+    calendar1=new QCalendarWidget;  calendar7=new  QCalendarWidget;
+    calendar2=new QCalendarWidget;  calendar8=new  QCalendarWidget;
+    calendar3=new QCalendarWidget;  calendar9=new  QCalendarWidget;
     calendar4=new QCalendarWidget;  calendar10=new QCalendarWidget;
     calendar5=new QCalendarWidget;  calendar11=new QCalendarWidget;
     calendar6=new QCalendarWidget;  calendar12=new QCalendarWidget;
+
     calendar<<calendar1<<calendar2<<calendar3<<calendar4<<calendar5<<calendar6
            <<calendar7<<calendar8<<calendar9<<calendar10<<calendar11<<calendar12;
 
@@ -180,16 +180,16 @@ PermissionsTab::PermissionsTab(QWidget *parent):QWidget(parent)
                  << calendarMenu6<< calendarMenu7<< calendarMenu8<< calendarMenu9<< calendarMenu10
                  << calendarMenu11<< calendarMenu12;
 
-    connect (calendar[0],SIGNAL(clicked(QDate)),SLOT(changeDateSlot0(QDate)));
-    connect (calendar[1],SIGNAL(clicked(QDate)),SLOT(changeDateSlot1(QDate)));
-    connect (calendar[2],SIGNAL(clicked(QDate)),SLOT(changeDateSlot2(QDate)));
-    connect (calendar[3],SIGNAL(clicked(QDate)),SLOT(changeDateSlot3(QDate)));
-    connect (calendar[4],SIGNAL(clicked(QDate)),SLOT(changeDateSlot4(QDate)));
-    connect (calendar[5],SIGNAL(clicked(QDate)),SLOT(changeDateSlot5(QDate)));
-    connect (calendar[6],SIGNAL(clicked(QDate)),SLOT(changeDateSlot6(QDate)));
-    connect (calendar[7],SIGNAL(clicked(QDate)),SLOT(changeDateSlot7(QDate)));
-    connect (calendar[8],SIGNAL(clicked(QDate)),SLOT(changeDateSlot8(QDate)));
-    connect (calendar[9],SIGNAL(clicked(QDate)),SLOT(changeDateSlot9(QDate)));
+    connect (calendar[0], SIGNAL(clicked(QDate)),SLOT(changeDateSlot0(QDate)));
+    connect (calendar[1], SIGNAL(clicked(QDate)),SLOT(changeDateSlot1(QDate)));
+    connect (calendar[2], SIGNAL(clicked(QDate)),SLOT(changeDateSlot2(QDate)));
+    connect (calendar[3], SIGNAL(clicked(QDate)),SLOT(changeDateSlot3(QDate)));
+    connect (calendar[4], SIGNAL(clicked(QDate)),SLOT(changeDateSlot4(QDate)));
+    connect (calendar[5], SIGNAL(clicked(QDate)),SLOT(changeDateSlot5(QDate)));
+    connect (calendar[6], SIGNAL(clicked(QDate)),SLOT(changeDateSlot6(QDate)));
+    connect (calendar[7], SIGNAL(clicked(QDate)),SLOT(changeDateSlot7(QDate)));
+    connect (calendar[8], SIGNAL(clicked(QDate)),SLOT(changeDateSlot8(QDate)));
+    connect (calendar[9], SIGNAL(clicked(QDate)),SLOT(changeDateSlot9(QDate)));
     connect (calendar[10],SIGNAL(clicked(QDate)),SLOT(changeDateSlot10(QDate)));
     connect (calendar[11],SIGNAL(clicked(QDate)),SLOT(changeDateSlot11(QDate)));
 
@@ -233,106 +233,105 @@ QLabel *PermissionsTab::newlbl(const QString &str)
 
 void PermissionsTab::changeDateSlot0(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu1->close();
     visit[0]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot1(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu2->close();
     visit[1]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot2(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu3->close();
     visit[2]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot3(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu4->close();
     visit[3]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot4(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu5->close();
     visit[4]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot5(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu6->close();
     visit[5]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot6(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu7->close();
     visit[6]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot7(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu8->close();
     visit[7]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot8(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu9->close();
     visit[8]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot9(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu10->close();
     visit[9]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot10(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu11->close();
     visit[10]->setText(podate);
 }
 
 void PermissionsTab::changeDateSlot11(QDate dat)
 {
-    podate=dat.toString("dd/MM/yyyy");
+    podate=dat.toString("dd.MM.yyyy");
     calendarMenu12->close();
     visit[11]->setText(podate);
+
 }
 
  void PermissionsTab::setMyModel2(QSqlTableModel *model)
  {
-    // qDebug()<<model->.toString();
      mapper2->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
-     model->select();
      mapper2->setModel(model);
-     mapper2->addMapping(visit1,6);
-     mapper2->addMapping(visit2,7);
-     mapper2->addMapping(visit3,8);
-     mapper2->addMapping(visit4,9);
-     mapper2->addMapping(visit5,10);
-     mapper2->addMapping(visit6,11);
-     mapper2->addMapping(visit7,12);
-     mapper2->addMapping(visit8,13);
-     mapper2->addMapping(visit9,14);
-     mapper2->addMapping(visit10,15);
-     mapper2->addMapping(visit11,16);
-     mapper2->addMapping(visit12,17);
+     mapper2->addMapping(visit1,6,"plainText");
+     mapper2->addMapping(visit2,7,"plainText");
+     mapper2->addMapping(visit3,8,"plainText");
+     mapper2->addMapping(visit4,9,"plainText");
+     mapper2->addMapping(visit5,10,"plainText");
+     mapper2->addMapping(visit6,11,"plainText");
+     mapper2->addMapping(visit7,12,"plainText");
+     mapper2->addMapping(visit8,13,"plainText");
+     mapper2->addMapping(visit9,14,"plainText");
+     mapper2->addMapping(visit10,15,"plainText");
+     mapper2->addMapping(visit11,16,"plainText");
+     mapper2->addMapping(visit12,17,"plainText");
  }
 
  void PermissionsTab::setIndex(int row)

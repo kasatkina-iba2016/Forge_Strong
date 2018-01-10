@@ -1,5 +1,5 @@
 QPushButton{
-    display: inline-block;
+
     color: #f3f3f3;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
@@ -11,7 +11,7 @@ QPushButton{
     border-color: #fa0000 #000 #ff4d00;
     border-radius: 6px;
     background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #fa0000, stop:1 #ff4d00);
-    transition: 0.2s;
+
 }
 
 QPushButton:hover {
@@ -54,7 +54,6 @@ QMenuBar::item {
     border-radius: 4px;
     border-left: 2px solid #393942;
     border-right: 2px solid #4f5058;
-    display: block;
     padding: 10px 14px;
     margin: 10px 0;
     line-height: 28px;

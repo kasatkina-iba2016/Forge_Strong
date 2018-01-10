@@ -32,7 +32,6 @@
 
          QDataWidgetMapper *mapper2;
          QLabel *newlbl(const QString &str);
-
          QLabel *visitLbl;
          QList<QToolButton*> btn;
          QList<QTextEdit*> visit;

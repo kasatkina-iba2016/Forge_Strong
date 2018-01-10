@@ -80,7 +80,7 @@ QString Dialog::getInputCena() const
 
 void Dialog::selectNameSlot()
 {
-   nameList nn("Список клиентов","Klients","Фамилия Имя Отчество","Телефон/Email",this);
+   nameList nn("Список клиентов","Clients","Фамилия Имя Отчество","Телефон/Email",this);
     switch( nn.exec() )
     {
        case QDialog::Accepted:

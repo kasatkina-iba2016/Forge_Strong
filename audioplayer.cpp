@@ -16,7 +16,7 @@ audioPlayer::audioPlayer(QWidget *parent) :
     player->setPlaylist(playList);
     player->setVolume(20);
     ui->playListView->setModel(playListModel);
-    playListModel->setHorizontalHeaderLabels(QStringList()<< tr("Audio Track")<<tr ("File Path"));
+    playListModel->setHorizontalHeaderLabels(QStringList()<<tr("Audio Track")<<tr("File Path"));
     ui->playListView->hideColumn(1);
     ui->playListView->verticalHeader()->setVisible(false);
     ui->playListView->setSelectionBehavior(QAbstractItemView::SelectRows);

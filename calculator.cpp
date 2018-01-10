@@ -83,7 +83,8 @@ void Calculator::calcul()
      if (oper=="/")
       {
          if (dat2==0)
-        { rez=0;
+        {
+         rez=0;
          monit2->setText("error");
          return;}
          else rez=dat1/dat2;

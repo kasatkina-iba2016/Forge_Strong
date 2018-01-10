@@ -64,20 +64,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
    cascadeAction=new QAction("Каскад",0);
    cascadeAction->setIcon(QPixmap(":/Pict/windows.png"));
-   mnuFile4->addAction(QPixmap(":/Pict/windows.png"),"&Каскад",this,SLOT(cascadeSubWindows()),Qt::CTRL+Qt::Key_K);
+ //  mnuFile4->addAction(QPixmap(":/Pict/windows.png"),"&Каскад",this,SLOT(cascadeSubWindows()),Qt::CTRL+Qt::Key_K);
    cascadeAction->setIconVisibleInMenu(true);
-   connect(cascadeAction, SIGNAL(triggered()), mdiArea, SLOT(cascadeSubWindows()));
+ //  connect(cascadeAction, SIGNAL(triggered()), mdiArea, SLOT(cascadeSubWindows()));
 
    titleAction=new QAction("Мозайка",0);
    titleAction->setIcon(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"));
-   mnuFile4->addAction(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"),"&Мозайка",this,SLOT(tileSubWindows()),Qt::CTRL+Qt::Key_K);
+ //  mnuFile4->addAction(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"),"&Мозайка",this,SLOT(tileSubWindows()),Qt::CTRL+Qt::Key_K);
    titleAction->setIconVisibleInMenu(true);
-   connect(titleAction, SIGNAL(triggered()), mdiArea, SLOT(tileSubWindows()));
+  // connect(titleAction, SIGNAL(triggered()), mdiArea, SLOT(tileSubWindows()));
 
    mySuperPlayer=new audioPlayer(0);
-   audioAction=new QAction("Super audio player",0);
+   audioAction=new QAction("Аудио плеер",0);
    audioAction->setIcon(QPixmap(":/Pict/player.png"));
-   mnuFile4->addAction(QPixmap(":/Pict/player.png"),"&Super audio player",this,SLOT(audioSlot()),Qt::ALT+Qt::Key_A);
+   mnuFile4->addAction(QPixmap(":/Pict/player.png"),"&Аудио плеер",this,SLOT(audioSlot()),Qt::ALT+Qt::Key_A);
    audioAction->setIconVisibleInMenu(true);
    connect(audioAction, SIGNAL(triggered()),SLOT(audioSlot()));
 
@@ -163,7 +163,7 @@ void MainWindow::print()
 
 void MainWindow::clientSlot()
 {
-    nameList *nn= new nameList("Список клиентов","Klients","Фамилия Имя Отчество","Телефон/Email");
+    nameList *nn= new nameList("Список клиентов","Clients","Фамилия Имя Отчество","Телефон/Email");
     mdiArea->addSubWindow(nn);
     nn->acceptAction->setEnabled(false);
     nn->show();
