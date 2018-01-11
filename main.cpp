@@ -1,6 +1,7 @@
 #include "facade.h"
 #include "namelist.h"
 #include "mainwindow.h"
+#include "authorizationUser.h"
 #include <QDebug>
 #include <QApplication>
 #include <QSqlDatabase>
@@ -30,12 +31,43 @@ int main(int argc, char *argv[])
     }
 
     QFile StyleFile;
-        StyleFile.setFileName(":/Pict/Stylefile.css");
-        StyleFile.open(QFile::ReadOnly);
-        QString cssStr=StyleFile.readAll();
-        qApp->setStyleSheet(cssStr);
-    MainWindow mai;
+    StyleFile.setFileName(":/Pict/Stylefile.css");
+    StyleFile.open(QFile::ReadOnly);
+    QString cssStr=StyleFile.readAll();
+    qApp->setStyleSheet(cssStr);
 
-    mai.show();
-    return a.exec();
+    MainWindow mai;
+    AuthorizationUser m_user;
+    m_user.show();
+
+    QString loginTxt;
+    QString passwordTxt;
+    QSqlQuery sql;
+
+    switch(m_user.exec())
+    {
+       case QDialog::Accepted:
+       loginTxt=m_user.loginTextEdit->toPlainText();
+       passwordTxt=m_user.passwordTextEdit->toPlainText();
+       if (sql.exec("Select * from Authorization where UserName='loginTxt' and PassWord='passwordTxt'"))
+       {
+         m_user.close();
+         mai.show();
+         return a.exec();
+       }
+       else
+       {
+           m_user.loginTextEdit->clear();
+           m_user.passwordTextEdit->clear();
+           return a.exec();
+       }
+
+       break;
+
+       default:
+       m_user.close();
+
+       break;
+    }
+
 }

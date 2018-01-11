@@ -13,6 +13,10 @@ public:
 
     QTextEdit *loginTextEdit, *passwordTextEdit;
     QPushButton *OkButton, *cancelButton;
+    QLabel *loginLbl, *passwordLbl;
+    QDialogButtonBox *buttonBox;
+    QHBoxLayout *Layout1, *Layout2;
+    QVBoxLayout *Layout3;
 
 signals:
 
