@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
    mdiArea->addSubWindow(fac);
 
-   signalMap=new QSignalMapper(this);
+   signalMap=new QSignalMapper();
 
    mnuFile1=new QMenu("&Файл");
    mnuFile2=new QMenu("&Справочниики");
@@ -70,7 +70,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
    titleAction=new QAction("Мозайка",0);
    titleAction->setIcon(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"));
- //  mnuFile4->addAction(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"),"&Мозайка",this,SLOT(tileSubWindows()),Qt::CTRL+Qt::Key_K);
+ //  mnuFile4->addAction(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"),"&Мозайка",this,SLOT(tileSubWindows()),Qt::CTRL+Qt::Key_M);
    titleAction->setIconVisibleInMenu(true);
   // connect(titleAction, SIGNAL(triggered()), mdiArea, SLOT(tileSubWindows()));
 

@@ -3,7 +3,7 @@
 AuthorizationUser::AuthorizationUser(QWidget *parent) : QDialog(parent)
 {
     this->setWindowTitle("Авторизаиция пользователя");
-
+    this->setFixedSize(280,200);
     loginTextEdit=new QTextEdit;
     loginTextEdit->setFixedHeight(25);
     loginTextEdit->setFixedWidth(150);
@@ -13,6 +13,8 @@ AuthorizationUser::AuthorizationUser(QWidget *parent) : QDialog(parent)
 
     loginLbl=new QLabel("Логин");
     passwordLbl=new QLabel("Пароль");
+    informLbl=new QLabel("Введите логин и пароль");
+    informLbl->setFixedSize(200,25);
 
     OkButton=new QPushButton(trUtf8("Подтвердить"));
     cancelButton=new QPushButton(trUtf8("Отмена"));
@@ -34,6 +36,7 @@ AuthorizationUser::AuthorizationUser(QWidget *parent) : QDialog(parent)
     Layout2->addWidget(passwordTextEdit);
     Layout3->addLayout(Layout1);
     Layout3->addLayout(Layout2);
+    Layout3->addWidget(informLbl);
     Layout3->addWidget(buttonBox);
 
     setLayout(Layout3);

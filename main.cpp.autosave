@@ -71,5 +71,5 @@ int main(int argc, char *argv[])
            m_user.show();
         }
     }
-    return a.exec();
+    return 0;
 }

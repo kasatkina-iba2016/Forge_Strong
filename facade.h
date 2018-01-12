@@ -12,7 +12,7 @@
 #include <QMenuBar>
 #include <QToolBar>
 #include "proxymodel.h"
-#include "edit.h"
+#include "information.h"
 
 class Facade : public QDialog
 {
