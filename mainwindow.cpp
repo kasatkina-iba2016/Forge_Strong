@@ -19,12 +19,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
    mdiArea->addSubWindow(fac);
 
+   setCentralWidget(mdiArea);
+
    signalMap=new QSignalMapper();
 
    mnuFile1=new QMenu("&Файл");
    mnuFile2=new QMenu("&Справочниики");
+   mnuFile3=new QMenu("&Справка");
    mnuFile4=new QMenu("&Окна");
-   mnuFile5=new QMenu("&Помощь");
+
 
    saveAsAction=new QAction(tr("&Сохранить как..."),this);
    saveAsAction->setIcon(QPixmap(":/Pict/SaveAs.png"));
@@ -64,15 +67,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
    cascadeAction=new QAction("Каскад",0);
    cascadeAction->setIcon(QPixmap(":/Pict/windows.png"));
- //  mnuFile4->addAction(QPixmap(":/Pict/windows.png"),"&Каскад",this,SLOT(cascadeSubWindows()),Qt::CTRL+Qt::Key_K);
+   mnuFile4->addAction(QPixmap(":/Pict/windows.png"),"&Каскад",this,SLOT(cascadeSubWindows()),Qt::CTRL+Qt::Key_K);
    cascadeAction->setIconVisibleInMenu(true);
- //  connect(cascadeAction, SIGNAL(triggered()), mdiArea, SLOT(cascadeSubWindows()));
+   connect(cascadeAction, SIGNAL(triggered()), mdiArea, SLOT(cascadeSubWindows()));
 
    titleAction=new QAction("Мозайка",0);
    titleAction->setIcon(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"));
- //  mnuFile4->addAction(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"),"&Мозайка",this,SLOT(tileSubWindows()),Qt::CTRL+Qt::Key_M);
+   mnuFile4->addAction(QPixmap(":/Pict/Channel_Mosaic_icon-icons.com_54197.png"),"&Мозайка",this,SLOT(tileSubWindows()),Qt::CTRL+Qt::Key_M);
    titleAction->setIconVisibleInMenu(true);
-  // connect(titleAction, SIGNAL(triggered()), mdiArea, SLOT(tileSubWindows()));
+   connect(titleAction, SIGNAL(triggered()), mdiArea, SLOT(tileSubWindows()));
 
    mySuperPlayer=new audioPlayer(0);
    audioAction=new QAction("Аудио плеер",0);
@@ -88,10 +91,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    calculatorAction->setIconVisibleInMenu(true);
    connect(calculatorAction, SIGNAL(triggered()),SLOT(calculatorSlot()));
 
+   aboutMyprogramm=new AboutClass;
+   aboutAction=new QAction("О программе",0);
+   mnuFile3->addAction("О программе",this,SLOT(aboutSlot()));
+
+
    menuBar()->addMenu(mnuFile1);
    menuBar()->addMenu(mnuFile2);
    menuBar()->addMenu(mnuFile4);
-   menuBar()->addMenu(mnuFile5);
+   menuBar()->addMenu(mnuFile3);
 
    ptb1=new QToolBar;
    addToolBar(Qt::TopToolBarArea,ptb1);
@@ -105,11 +113,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    ptb1->addSeparator();
    ptb1->addAction(audioAction);
    ptb1->addAction(calculatorAction);
-   setCentralWidget(mdiArea);
-}
-
-void MainWindow::fileOpen()
-{
+   ptb1->addAction(cascadeAction);
+   ptb1->addAction(titleAction);
 
 }
 
@@ -198,6 +203,11 @@ void MainWindow::calculatorSlot()
     calculator->setWindowTitle("Calculator");
     calculator->resize(230,300);
     calculator->show();
+}
+
+void MainWindow::aboutSlot()
+{
+    aboutMyprogramm->show();
 }
 
  MainWindow::~MainWindow()

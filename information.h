@@ -75,7 +75,7 @@
 
      PermissionsTab *perm;
      GeneralTab *gen;
-     QDialogButtonBox *buttonBox;
+
      QTabWidget *tabWidget;
      QPushButton *saveButton, *cancelButton;
 

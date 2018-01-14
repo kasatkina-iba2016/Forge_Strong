@@ -3,6 +3,8 @@
 
 #include "facade.h"
 #include "calculator.h"
+#include "audioplayer.h"
+#include "aboutclass.h"
 #include <QMainWindow>
 #include <QActionGroup>
 #include <QMenu>
@@ -10,7 +12,6 @@
 #include <QMdiArea>
 #include <QSignalMapper>
 #include <QtPrintSupport/QPrinter>
-#include "audioplayer.h"
 
 class MainWindow : public QMainWindow
 {
@@ -22,15 +23,16 @@ public:
     Facade *fac;
     QMdiArea *mdiArea;
     QSignalMapper *signalMap;
-    QMenu *mnuFile1,*mnuFile2,*mnuFile4,*mnuFile5;
+    QMenu *mnuFile1,*mnuFile2,*mnuFile3,*mnuFile4;
     QToolBar *ptb1;
     QAction *saveAsAction,*exitAction,*printAction,*cascadeAction,*titleAction,
-    *clientsAction,*serviceAction,*abonementAction,*audioAction,*calculatorAction;
+    *clientsAction,*serviceAction,*abonementAction,*audioAction,*calculatorAction,*aboutAction;
     audioPlayer *mySuperPlayer;
     Calculator *calculator;
+    AboutClass *aboutMyprogramm;
 
 public slots:
-   void fileOpen();
+
    void fileSaveAs();
    void print();
    void abonementSlot();
@@ -38,6 +40,7 @@ public slots:
    void serviceSlot();
    void audioSlot();
    void calculatorSlot();
+   void aboutSlot();
 
 };
 

@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     namedialog.cpp \
     audioplayer.cpp \
     calculator.cpp \
-    authorizationUser.cpp
+    authorizationUser.cpp \
+    aboutclass.cpp
 
 HEADERS  += facade.h \
     namelist.h \
@@ -35,7 +36,8 @@ HEADERS  += facade.h \
     namedialog.h \
     audioplayer.h \
     calculator.h \
-    authorizationUser.h
+    authorizationUser.h \
+    aboutclass.h
 
 RESOURCES += \
     pict.qrc

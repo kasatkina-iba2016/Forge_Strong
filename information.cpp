@@ -8,19 +8,24 @@ Information::Information(QWidget *parent) : QDialog(parent)
    tabWidget->addTab(gen=new GeneralTab(),tr("Информация о клиенте"));
    tabWidget->addTab(perm=new  PermissionsTab(), tr("Посещение занятий"));
 
-   saveButton=new QPushButton("Сохранить");
+   saveButton=new QPushButton("ОК");
    cancelButton=new QPushButton("Отмена");
+
+   saveButton->setFixedSize(110,36);
+   saveButton->setFixedSize(110,36);
 
    connect( saveButton,SIGNAL(clicked()), SLOT(accept()));
    connect( cancelButton,SIGNAL(clicked()), SLOT(reject()));
 
-   buttonBox=new QDialogButtonBox(Qt::Horizontal);
-   buttonBox->addButton(saveButton,QDialogButtonBox::ActionRole);
-   buttonBox->addButton(cancelButton,QDialogButtonBox::ActionRole);
+   QHBoxLayout *buttonLayout = new QHBoxLayout;
+   buttonLayout->addWidget(saveButton);
+   buttonLayout->addWidget(cancelButton);
+   buttonLayout->setAlignment(Qt::AlignCenter|Qt::AlignCenter);
 
    QVBoxLayout *mainLayout = new QVBoxLayout;
    mainLayout->addWidget(tabWidget);
-   mainLayout->addWidget(buttonBox);
+   mainLayout->addLayout(buttonLayout);
+   mainLayout->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
    setLayout(mainLayout);
 
    setWindowTitle("Редакирование информации о клиенте");
@@ -60,7 +65,7 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent)
     numberEdit=new QTextEdit;
     numberEdit->setFixedHeight(25);
 
-    mapper=new QDataWidgetMapper(this);
+    mapper=new QDataWidgetMapper();
 
     QHBoxLayout *Layout1=new QHBoxLayout;
     QHBoxLayout *Layout2=new QHBoxLayout;
@@ -123,7 +128,7 @@ void GeneralTab::selectNameSlot()
 PermissionsTab::PermissionsTab(QWidget *parent):QWidget(parent)
 {
     setWindowTitle("Информация о посещениях");
-    mapper2=new QDataWidgetMapper(this);
+    mapper2=new QDataWidgetMapper();
     QGridLayout *newLineLayout=new QGridLayout(this);
 
     visit1=new  QTextEdit;  btn1=new  QToolButton;

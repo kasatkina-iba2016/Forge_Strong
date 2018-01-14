@@ -8,8 +8,11 @@ NameDialog::NameDialog(const QString title, const QString headerName1, const QSt
      nameTextEdit->setFixedHeight(25);
      telephoneTextEdit=new QTextEdit;
      telephoneTextEdit->setFixedHeight(25);
-     saveButton=new QPushButton(trUtf8("Сохранить"));
+     saveButton=new QPushButton(trUtf8("ОК"));
      cancelButton=new QPushButton(trUtf8("Отмена"));
+
+     saveButton->setFixedSize(110,40);
+     saveButton->setFixedSize(110,40);
 
      buttonBox=new QDialogButtonBox(Qt::Horizontal);
      buttonBox->addButton(saveButton,QDialogButtonBox::ActionRole);

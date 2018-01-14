@@ -15,7 +15,6 @@ public:
     QString getInputService() const;
     QString getInputCena() const;
     QString cena;
-    QDialogButtonBox *buttonBox;
     QTextEdit *numberTextEdit, *nameTextEdit, *cerviceTextEdit;
     QPushButton *tableNameButton, *tableCerviceButton, *saveButton, *cancelButton;
 

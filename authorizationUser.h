@@ -14,13 +14,9 @@ public:
     QTextEdit *loginTextEdit, *passwordTextEdit;
     QPushButton *OkButton, *cancelButton;
     QLabel *loginLbl, *passwordLbl, *informLbl;
-    QDialogButtonBox *buttonBox;
-    QHBoxLayout *Layout1, *Layout2;
+    QHBoxLayout *Layout1, *Layout2,*Layout4;
     QVBoxLayout *Layout3;
 
-signals:
-
-public slots:
 };
 
 #endif // AUTHORIZATIONUSER_H

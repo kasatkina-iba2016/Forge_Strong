@@ -14,16 +14,17 @@ Dialog::Dialog(const QString title, QWidget *parent) : QDialog(parent)
      nameTextEdit->setFixedHeight(25);
      cerviceTextEdit=new QTextEdit;
      cerviceTextEdit->setFixedHeight(25);
-     saveButton=new QPushButton(trUtf8("Сохранить"));
+     saveButton=new QPushButton(trUtf8("ОК"));
      cancelButton=new QPushButton(trUtf8("Отмена"));
 
-     buttonBox=new QDialogButtonBox(Qt::Horizontal);
-     buttonBox->addButton(saveButton,QDialogButtonBox::ActionRole);
-     buttonBox->addButton(cancelButton,QDialogButtonBox::ActionRole);
+     saveButton->setFixedSize(110,36);
+     cancelButton->setFixedSize(110,36);
 
         QGridLayout *newLineLayout=new QGridLayout(this);
         QHBoxLayout *Layout1=new QHBoxLayout;
         QHBoxLayout *Layout2=new QHBoxLayout;
+        QHBoxLayout *Layout3=new QHBoxLayout;
+        Layout3->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
         QLabel *numberLbl=new QLabel("Номер абонемента:");
         QLabel *nameLbl=new QLabel("Фамилия Имя Отчество:");
         QLabel *serviceLbl=new QLabel("Вид услуги:");
@@ -34,13 +35,15 @@ Dialog::Dialog(const QString title, QWidget *parent) : QDialog(parent)
         Layout2->addWidget(cerviceTextEdit);
         Layout2->addWidget(tableCerviceButton);
         Layout2->setSpacing(0);
+        Layout3->addWidget(saveButton);
+        Layout3->addWidget(cancelButton);
         newLineLayout->addWidget(numberLbl,0,0);
         newLineLayout->addWidget(numberTextEdit,1,0);
         newLineLayout->addWidget(nameLbl,2,0);
         newLineLayout->addLayout(Layout1,3,0);
         newLineLayout->addWidget(serviceLbl,4,0);
         newLineLayout->addLayout(Layout2,5,0);
-        newLineLayout->addWidget(buttonBox,6,0);
+        newLineLayout->addLayout(Layout3,6,0);
 
         setLayout(newLineLayout);
 
